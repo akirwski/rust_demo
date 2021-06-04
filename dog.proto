@@ -1,0 +1,25 @@
+syntax = "proto3";
+
+package dog;
+
+service Dog {
+  rpc Send(NewDogRequest) returns (NewDogResponse);
+}
+
+message NewDogRequest {
+  Breed breed = 1;
+}
+
+message NewDogResponse {
+  string name = 1;
+  int32 age = 2;
+  bool sex = 3;
+  Breed breed = 4;
+}
+
+enum Breed {//enum needs to start from 0
+  //option allow_alias = true; this accept alians, otherwise compiler returns error
+  BULLDOG = 0;
+  POODLE = 1;
+  CHIHUAHUA = 2;
+}
